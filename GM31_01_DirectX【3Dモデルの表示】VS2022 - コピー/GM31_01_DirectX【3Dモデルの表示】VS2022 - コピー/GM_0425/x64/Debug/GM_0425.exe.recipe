@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <ProjectOutputs>
+    <ProjectOutput>
+      <FullPath>C:\Users\n68ki\OneDrive\デスクトップ\GM31_01_DirectX【3Dモデルの表示】VS2022 - コピー\GM31_01_DirectX【3Dモデルの表示】VS2022 - コピー\x64\Debug\GM_0425.exe</FullPath>
+    </ProjectOutput>
+  </ProjectOutputs>
+  <ContentFiles>
+    <ContentFile>
+      <FullPath>C:\Users\n68ki\OneDrive\デスクトップ\GM31_01_DirectX【3Dモデルの表示】VS2022 - コピー\GM31_01_DirectX【3Dモデルの表示】VS2022 - コピー\GM_0425\shader\unlitTexturePS.cso</FullPath>
+    </ContentFile>
+    <ContentFile>
+      <FullPath>C:\Users\n68ki\OneDrive\デスクトップ\GM31_01_DirectX【3Dモデルの表示】VS2022 - コピー\GM31_01_DirectX【3Dモデルの表示】VS2022 - コピー\GM_0425\shader\unlitTextureVS.cso</FullPath>
+    </ContentFile>
+    <ContentFile>
+      <FullPath>C:\Users\n68ki\OneDrive\デスクトップ\GM31_01_DirectX【3Dモデルの表示】VS2022 - コピー\GM31_01_DirectX【3Dモデルの表示】VS2022 - コピー\GM_0425\shader\vertexLightingPS.cso</FullPath>
+    </ContentFile>
+    <ContentFile>
+      <FullPath>C:\Users\n68ki\OneDrive\デスクトップ\GM31_01_DirectX【3Dモデルの表示】VS2022 - コピー\GM31_01_DirectX【3Dモデルの表示】VS2022 - コピー\GM_0425\shader\vertexLightingVS.cso</FullPath>
+    </ContentFile>
+  </ContentFiles>
+  <SatelliteDlls />
+  <NonRecipeFileRefs />
+</Project>
