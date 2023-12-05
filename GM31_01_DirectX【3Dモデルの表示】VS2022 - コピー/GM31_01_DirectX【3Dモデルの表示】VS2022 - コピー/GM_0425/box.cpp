@@ -14,6 +14,7 @@ void Box::Init()
 
 	Renderer::CreatePixelShader(&m_PixelShader,
 		"shader\\vertexLightingPS.cso");
+	
 }
 
 void Box::Uninit()

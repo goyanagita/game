@@ -30,8 +30,18 @@ void Player::Init()
 	m_Rotation = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 	m_Scale = D3DXVECTOR3(0.01f, 0.01f, 0.01f);
 
-	Renderer::CreateVertexShader(&m_VertexShader, &m_VertexLayout,"shader\\vertexLightingVS.cso");
-	Renderer::CreatePixelShader(&m_PixelShader,"shader\\vertexLightingPS.cso");
+	/*Renderer::CreateVertexShader(&m_VertexShader, &m_VertexLayout,"shader\\vertexLightingVS.cso");
+	Renderer::CreatePixelShader(&m_PixelShader,"shader\\vertexLightingPS.cso");*/
+	////// テクスチャ読み込み
+	//D3DX11CreateShaderResourceViewFromFile(Renderer::GetDevice(),
+	//	"asset/texture/toon.png",
+	//	NULL,
+	//	NULL,
+	//	&m_ToonTexture,
+	//	NULL);
+	//assert(m_ToonTexture);
+	Renderer::CreateVertexShader(&m_VertexShader, &m_VertexLayout, "toonVS.cso");
+	Renderer::CreatePixelShader(&m_PixelShader, "toonPS.cso");
 
 	m_ShotSE = AddComponent<Audio>();
 	m_ShotSE->Load("asset\\bgm\\jyuu.wav");
@@ -53,11 +63,13 @@ void Player::Uninit()
 	m_VertexLayout->Release();
 	m_VertexShader->Release();
 	m_PixelShader->Release();
+	/*m_ToonTexture->Release();*/
 }
 
 void Player::Update()
 {
 	GameObject::Update();
+
 
 	D3DXVECTOR3 oldPosition = m_Position;
 
@@ -127,8 +139,11 @@ void Player::Update()
 	{
 		D3DXVECTOR3 position = cylinder->GetPosition();
 		D3DXVECTOR3 scale = cylinder->GetScale();
+		D3DXVECTOR3 rifht = cylinder->GetRight();//X軸分離
+		D3DXVECTOR3 forward = cylinder->GetForward();//Z軸分離
+		D3DXVECTOR3 direction = m_Position - position;//円形からプレイヤーまでの方向ベクトル
+		//obbxは箱の中心からプレイヤーまでのｘ距離
 
-		D3DXVECTOR3 direction = m_Position - position;
 		direction.y = 0.0f;
 		float lenght = D3DXVec3Length(&direction);
 
@@ -235,7 +250,7 @@ void Player::Draw()
 	//シェーダー設定
 	Renderer::GetDeviceContext()->VSSetShader(m_VertexShader, NULL, 0);
 	Renderer::GetDeviceContext()->PSSetShader(m_PixelShader, NULL, 0);
-
+	
 	//ワールドマトリクス設定
 	D3DXMATRIX world, scale, rot, trans;
 	D3DXMatrixScaling(&scale, m_Scale.x, m_Scale.y, m_Scale.z);
@@ -245,7 +260,8 @@ void Player::Draw()
 	m_Matrix = world;
 
 	Renderer::SetWorldMatrix(&world);
-
+	// トゥーンテクスチャ設定
+	Renderer::GetDeviceContext()->PSSetShaderResources(1, 1, &m_ToonTexture);
 	m_Model->Update(m_AnimationName.c_str(), m_Time, m_NextAnimationName.c_str(), m_Time, m_BlendRate);
 
 	//m_Model->Update("Idle", m_Time, "Run", m_Time, m_BlendRate);

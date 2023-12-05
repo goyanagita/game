@@ -9,15 +9,15 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
-    <Filter Include="リソース ファイル">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    <Filter Include="更新メモ">
+      <UniqueIdentifier>{46d0c56a-8c9b-4c9b-a366-f49e3e5309a2}</UniqueIdentifier>
     </Filter>
     <Filter Include="外観">
       <UniqueIdentifier>{5ff80999-fdb3-46f5-bf45-1e69eeeedc0b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="更新メモ">
-      <UniqueIdentifier>{46d0c56a-8c9b-4c9b-a366-f49e3e5309a2}</UniqueIdentifier>
+    <Filter Include="シェーダー">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -130,6 +130,9 @@
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="office.cpp">
+      <Filter>外観</Filter>
+    </ClCompile>
+    <ClCompile Include="yoyo.cpp">
       <Filter>外観</Filter>
     </ClCompile>
   </ItemGroup>
@@ -254,26 +257,50 @@
     <ClInclude Include="office.h">
       <Filter>外観</Filter>
     </ClInclude>
+    <ClInclude Include="yoyo.h">
+      <Filter>外観</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="shader\vertexLightingPS.hlsl">
-      <Filter>リソース ファイル</Filter>
+      <Filter>シェーダー</Filter>
     </FxCompile>
     <FxCompile Include="shader\vertexLightingVS.hlsl">
-      <Filter>リソース ファイル</Filter>
+      <Filter>シェーダー</Filter>
     </FxCompile>
     <FxCompile Include="shader\common.hlsl">
-      <Filter>リソース ファイル</Filter>
+      <Filter>シェーダー</Filter>
     </FxCompile>
     <FxCompile Include="shader\unlitTexturePS.hlsl">
-      <Filter>リソース ファイル</Filter>
+      <Filter>シェーダー</Filter>
     </FxCompile>
     <FxCompile Include="shader\unlitTextureVS.hlsl">
-      <Filter>リソース ファイル</Filter>
+      <Filter>シェーダー</Filter>
+    </FxCompile>
+    <FxCompile Include="shader\toonPS.hlsl">
+      <Filter>シェーダー</Filter>
+    </FxCompile>
+    <FxCompile Include="shader\toonVS.hlsl">
+      <Filter>シェーダー</Filter>
+    </FxCompile>
+    <FxCompile Include="shader\pixelLightingPS.hlsl">
+      <Filter>シェーダー</Filter>
+    </FxCompile>
+    <FxCompile Include="shader\pixelLightingVS.hlsl">
+      <Filter>シェーダー</Filter>
+    </FxCompile>
+    <FxCompile Include="ditherVS.hlsl">
+      <Filter>シェーダー</Filter>
+    </FxCompile>
+    <FxCompile Include="ditherPS.hlsl">
+      <Filter>シェーダー</Filter>
     </FxCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Text.txt">
+    <Text Include="更新と復習.txt">
+      <Filter>更新メモ</Filter>
+    </Text>
+    <Text Include="工程.txt">
       <Filter>更新メモ</Filter>
     </Text>
   </ItemGroup>

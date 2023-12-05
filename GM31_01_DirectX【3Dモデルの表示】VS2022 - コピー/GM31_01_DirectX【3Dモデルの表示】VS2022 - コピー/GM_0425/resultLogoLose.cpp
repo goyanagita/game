@@ -14,7 +14,7 @@ void ResultLogoLose::Init()
 		"shader\\unlitTexturePS.cso");
 
 	Sprite* sprite = AddComponent<Sprite>();
-	sprite->Init(0.0f, 0.0f, SCREEN_WIDTH, SCREEN_HEIGHT, "asset\\texture\\RAUDOBON.png");
+	sprite->Init(0.0f, 0.0f, SCREEN_WIDTH, SCREEN_HEIGHT, "asset\\texture\\gameover.png");
 }
 
 void ResultLogoLose::Uninit()

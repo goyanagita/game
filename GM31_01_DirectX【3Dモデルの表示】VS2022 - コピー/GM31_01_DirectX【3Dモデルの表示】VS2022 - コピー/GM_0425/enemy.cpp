@@ -6,14 +6,14 @@
 
 void Enemy::Init()
 {
-	//m_Position = D3DXVECTOR3(0.0f, 0.0f, 5.0f);
+	m_Position = D3DXVECTOR3(5.0f, 0.0f, 30.0f);
 	m_Scale = D3DXVECTOR3(0.3f, 0.3f, 0.3f);
 	m_Rotation = D3DXVECTOR3(0.0f, 135.0f, 0.0f);
 
 
 
 	m_Model = new Model();
-	m_Model->Load("asset\\model\\stone.obj");
+	m_Model->Load("asset\\model\\enemy.obj");
 
 	Renderer::CreateVertexShader(&m_VertexShader, &m_VertexLayout,
 		"shader\\vertexLightingVS.cso");

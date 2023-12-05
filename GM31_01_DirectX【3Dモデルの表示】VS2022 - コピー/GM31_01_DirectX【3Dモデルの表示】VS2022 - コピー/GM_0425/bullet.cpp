@@ -6,13 +6,13 @@
 #include "enemy.h"
 #include "explosion.h"
 #include "score.h"
-
+#include"yoyo.h"
 Model* Bullet::m_Model{};
 
 void Bullet::Load()
 {
 	m_Model = new Model();
-	m_Model->Load("asset\\model\\torus.obj");
+	m_Model->Load("asset\\model\\box_pink.obj");
 }
 
 void Bullet::Unload()
@@ -66,6 +66,28 @@ void Bullet::Update()
 			scene->AddGameObject<Explosion>(1)->SetPosition(enemyPos);
             SetDestroy();
 			enemy->SetDestroy();
+
+			Score* score = scene->GetGameObject<Score>();
+			score->AddCount(1);
+			return;
+		}
+	}
+
+	//“G‚Æ‚ÌÕ“Ë”»’è
+
+	std::vector<Yoyo*> yoyo = scene->GetGameObjects<Yoyo>();
+
+	for (Yoyo* yoyo : yoyo)
+	{
+		D3DXVECTOR3 yoyoPos = yoyo->GetPosition();
+		D3DXVECTOR3 direction = yoyoPos - m_Position;
+		float length = D3DXVec3Length(&direction);
+
+		if (length < 2.0f)
+		{
+			scene->AddGameObject<Explosion>(1)->SetPosition(yoyoPos);
+			SetDestroy();
+			yoyo->SetDestroy();
 
 			Score* score = scene->GetGameObject<Score>();
 			score->AddCount(1);

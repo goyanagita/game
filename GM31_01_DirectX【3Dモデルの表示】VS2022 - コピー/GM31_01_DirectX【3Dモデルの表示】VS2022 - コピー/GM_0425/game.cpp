@@ -26,6 +26,8 @@
 #include "rock.h"
 #include "tree.h"
 #include "office.h"
+#include"enemy.h"
+#include"yoyo.h"
 void Game::Init()
 {
 	srand(static_cast<unsigned int>(time(NULL)));
@@ -46,7 +48,8 @@ void Game::Init()
 	Office* office2 = AddGameObject<Office>(1);
 	office2->SetPosition(D3DXVECTOR3(5.0f, 0.0f, 5.0f));
 	office2->SetRotation(D3DXVECTOR3(0.0f, 0.0f, 0.0f));
-
+	AddGameObject<Enemy>(2);
+	AddGameObject<Yoyo>(1);
 	for (int i = 0; i < 20; i++)
 	{
 		Rock* rock = AddGameObject<Rock>(1);
@@ -258,7 +261,7 @@ void Game::Update()
 		
 		Manager::SetScene<Result>();
 	}
-	/*if (count->GetTime() == 3000 && score->GetScore() <= 20)
+	if (count->GetTime() == 3000 && score->GetScore() <= 20)
 	{
 
 		Manager::SetScene<ResultLose>();
@@ -267,6 +270,6 @@ void Game::Update()
 	{
 
 		Manager::SetScene<ResultPerfect>();
-	}*/
+	}
 	
 }
