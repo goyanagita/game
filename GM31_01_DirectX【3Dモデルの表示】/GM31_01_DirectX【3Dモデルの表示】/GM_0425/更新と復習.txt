@@ -1,0 +1,146 @@
+11/09 ・オフィスobjを表示させたい
+game.cppのInitに加える→　Office* office = AddGameObject<Office>(1);
+player.cppのupdateに判定追加
+playerから座標をとったほうがいいとかなんとか
+これはシーン内の全てのオブジェクトに適応されるのでひとつの処理だけつくっておけばいいらしい
+中心点から引いて座標ｘｙｚをもとめてる
+for (Office* office : office)
+	{
+		D3DXVECTOR3 position = office ->GetPosition();
+		D3DXVECTOR3 scale = office->GetScale();
+
+		if (position.x - scale.x - 0.1f < m_Position.x &&
+			m_Position.x < position.x + scale.x + 0.1f &&
+			position.z - scale.z - 0.1f < m_Position.z &&
+			m_Position.z < position.z + scale.z + 0.1f)
+		{
+			if (m_Position.y < position.y + scale.y *  2.0f - 0.1f)
+			{
+				m_Position.x = oldPosition.x;
+				m_Position.z = oldPosition.z;
+			}
+			else
+			{
+				groundHeight = position.y + scale.y * 2.0f;
+			}
+
+			break;
+		}
+
+
+	}
+
+・追加したオブジェクトを個別に座標や回転を変えたい
+game.hに追加
+void SetRotation(D3DXVECTOR3 Rotation)
+	{
+		m_Rotation = Rotation;
+	}
+	game.cppに追加　こうやってやるらしい
+		office1->SetRotation(D3DXVECTOR3(1.0f, 0.0f, 5.0f));
+
+		/11/21 トゥーンシェーダーの追加を行った
+		そのままシェーダーを追加してやればいけるとおもったのだが例外エラーが起きた
+		VS_INに〇〇がないとか言われてcommon.hlslに追加してやったのはよかったが、
+		rendererに対応させるようにBINORIとかTANGENTを追加しなかったのが原因だった。
+		シェーダーはつくれているがレイアウトはつくれていない状態
+		shader\\をシェーダーのプロパティの出力に追加
+		//フォグの追加を行う
+
+		//LODの授業
+		あらかじめ複数の段階のモデルを組んでおく
+		配列を組む
+		if()
+		m_MOdel[0]->Draw();
+		else
+		m_Model[1]->Draw();
+
+		Brender MOdifire ADDmodifire Decimate ポリゴン数を減らしてくれる
+		maya mesh 削減 or 画面上部の「編集」から「LOD（詳細レベル）」を選択し、「LODグループを作成」をクリックします。
+
+		12/05　ブルーム作成
+		1パス目　テクスチャを作成する
+		フィールド描画
+		ドーナツ描画（光源処理・スペキュラ付き）
+
+		2パス目
+		画面サイズの板ポリゴンの表示（ブルーム処理）
+		ここではブルーム処理を行う
+		単に板ポリゴンにテクスチャを貼り付けて描画するだけだが、この時にブルーム処理を施す
+
+		1パス目は通常のスペキュラ付きピクセルライティングなので、説明は割愛
+
+
+
+		//12/7 ネットワーク　HTTPから学ぶ情報のやりとりの仕組み
+		http://www.hal.ac.jp/index.html:80
+		→www.hal.ac.jpの中にあるindex.htmlを探してください80番ポートで?
+		URI
+		2番台は成功したこと
+		10番台は具体的な何かを表す
+		400番台とはクライアント側のエラーですよ
+		300番台はサーバー側のエラー
+
+		GET:指定したURLのデータを取得
+		クライアントがサーバーからオブジェクトを取得する場合、「200 OK」のステータスコードとオブジェクトを送信する
+		これを、サーバーのレスポンスと呼ぶ
+		POST　：指定したURLにデータを登録
+		<FORM METHOD="POST" ACTION="GGIのプログラム"＞
+
+HTTPプログラミング
+
+Hyper Text Transfer Protocol
+
+HTTP通信を開始する方：　HTTPクライアント（Webブラウザ）
+
+クライアントからの要求：　リクエストコマンド
+
+HTTPサーバへ、クライアントからリクエスト（コマンド）を送出することにより
+HTTP通信が開始される。
+
+HTTPの基本的なリクエスト
+
+GET:　指定したURLのデータを取得
+
+クライアントがサーバからオブジェクト（Webページ）を取得するときに使う
+指定のオブジェクトが存在する場合、「200 OK」のステータスコードと
+オブジェクトを送信する
+
+これを、サーバのレスポンスと呼ぶ
+
+POST	：指定したURLにデータを登録
+
+<FORM METHOD="POST"	ACTION="CGIのプログラム">
+
+PUT: 指定したURLにデータを保存
+DELETE：指定したURLのデータを削除
+HEAD:	メッセージヘッダだけを取得
+TRACE
+OPTIONSa
+
+HTTPはアプリケーション層
+WinInetライブラリを利用したプログラムを組み込んであげればいい
+
+HTTPクライアント
+
+WebサーバからHTMLファイルのソースを読み出す
+
+サーバに対してGETリクエストを送信すればよい
+
+WinInetライブラリを利用したプログラム
+
+インターネットプロトコルを隠蔽して高水準インターネットクライアントプログラミングを
+実現するためのライブラリ
+
+これを利用するあめには、
+1.winnnet.hをインクルードする
+#include<winnet.h>
+2.WinInet.libをプロジェクトに参加させる
+#pragma comment(lib,"WinInet.lib")
+------------------------
+HTTPサーバにアクセスする方法
+1.InternetOpen関数でWinInet開始する(インターネットハンドルが返される)
+2.InternetOpenUrl関数でセッションをオープンする
+3.INternetReadFile関数でデータを読み出す
+4.得られたハンドルをInternetCloseHandole関数で閉じる
+IPconfig
