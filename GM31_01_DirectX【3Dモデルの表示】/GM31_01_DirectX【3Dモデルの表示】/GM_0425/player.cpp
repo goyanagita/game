@@ -240,10 +240,10 @@ void Player::Update()
 	shadowPosition.y = groundHeight;
 	m_Shadow->SetPosition(shadowPosition);
 
-	
+	/*
 	g_TexAnime += 0.01f;
 	if (g_TexAnime > 1.1f)
-		g_TexAnime - 0.0f;
+		g_TexAnime - 0.0f;*/
 }
 
 void Player::Draw()
@@ -278,10 +278,10 @@ void Player::Draw()
 	{
 		m_BlendRate = 1.0f;
 	}
-	//更新したパラメータをシェーダーへ渡す
-	PARAMETER param;
-	param.Parameter.X = g_TexAnimme;
-	Renderer::SetParameter(param);
+	////更新したパラメータをシェーダーへ渡す
+	//PARAMETER param;
+	//param.Parameter.X = g_TexAnimme;
+	//Renderer::SetParameter(param);
 
 	m_Model->Draw();
 }

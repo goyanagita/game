@@ -16,10 +16,10 @@ void Rock::Init()
 	m_Model->Load("asset\\model\\stone.obj");
 
 	Renderer::CreateVertexShader(&m_VertexShader, &m_VertexLayout,
-		"shader\\vertexLightingVS.cso");
+		"shader\\bloomVS.cso");
 
 	Renderer::CreatePixelShader(&m_PixelShader,
-		"shader\\vertexLightingPS.cso");
+		"shader\\bloomPS.cso");
 }
 
 void Rock::Uninit()
