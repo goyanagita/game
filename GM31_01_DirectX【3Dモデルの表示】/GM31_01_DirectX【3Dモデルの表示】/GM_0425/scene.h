@@ -4,7 +4,6 @@
 #include <typeinfo>
 #include <vector>
 
-
 class Scene
 {
 protected:
@@ -55,6 +54,11 @@ public:
 
 			}
 		}
+	
+
+
+		
+
 	}
 
 	template <typename T>

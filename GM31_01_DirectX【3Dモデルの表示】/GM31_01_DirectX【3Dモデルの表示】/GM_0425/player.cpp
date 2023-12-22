@@ -19,30 +19,35 @@ void Player::Init()
 	m_Model->Load("asset\\model\\Car.obj");*/
 
 	m_Model = new AnimationModel();
-	m_Model->Load("asset\\model\\Pain Gesture.fbx"); 
-	m_Model->LoadAnimation("asset\\model\\Bot_Run.fbx", "Run");
-	m_Model->LoadAnimation("asset\\model\\Bot_Idle.fbx","Idle");
+	m_Model->Load("asset\\model\\Remy.fbx"); 
+	m_Model->LoadAnimation("asset\\model\\Walking.fbx", "Run");
+	m_Model->LoadAnimation("asset\\model\\Walking.fbx", "Idle");
+	//m_Model->LoadAnimation("asset\\model\\Bot_Run.fbx", "Run");
+	//m_Model->LoadAnimation("asset\\model\\Bot_Idle.fbx","Idle");
 
 	m_AnimationName = "Idle";
 	m_NextAnimationName = "Idle";
 
 	m_Position = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 	m_Rotation = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
-	m_Scale = D3DXVECTOR3(0.01f, 0.01f, 0.01f);
+	m_Scale = D3DXVECTOR3(0.007f, 0.007f, 0.007f);
 
 	/*Renderer::CreateVertexShader(&m_VertexShader, &m_VertexLayout,"shader\\vertexLightingVS.cso");
 	Renderer::CreatePixelShader(&m_PixelShader,"shader\\vertexLightingPS.cso");*/
-	////// テクスチャ読み込み
-	//D3DX11CreateShaderResourceViewFromFile(Renderer::GetDevice(),
-	//	"asset/texture/toon.png",
-	//	NULL,
-	//	NULL,
-	//	&m_ToonTexture,
-	//	NULL);
-	//assert(m_ToonTexture);
-	Renderer::CreateVertexShader(&m_VertexShader, &m_VertexLayout, "toonVS.cso");
-	Renderer::CreatePixelShader(&m_PixelShader, "toonPS.cso");
+
+	// テクスチャ読み込み
+	D3DX11CreateShaderResourceViewFromFile(Renderer::GetDevice(),
+		"asset/texture/toon.png",
+		NULL,
+		NULL,
+		&m_ToonTexture,
+		NULL);
+	assert(m_ToonTexture);
+	Renderer::CreateVertexShader(&m_VertexShader, &m_VertexLayout, "shader\\toonVS.cso");
+	Renderer::CreatePixelShader(&m_PixelShader, "shader\\toonPS.cso");
+
 	
+
 
 	m_ShotSE = AddComponent<Audio>();
 	m_ShotSE->Load("asset\\bgm\\jyuu.wav");

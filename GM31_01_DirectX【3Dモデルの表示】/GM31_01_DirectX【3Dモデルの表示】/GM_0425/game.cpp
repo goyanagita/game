@@ -256,20 +256,23 @@ void Game::Update()
 	
 
 	//‰æ–Ê‘JˆÚƒR[ƒh‚ð‚±‚±‚É‘‚­
-	if (Input::GetKeyTrigger(VK_RETURN))//(count->GetTime() == 3000 && score->GetScore() >= 20)
+	if (/*Input::GetKeyTrigger(VK_RETURN))*/count->GetTime() == 3000 && score->GetScore() >= 3)
 	{
 		
 		Manager::SetScene<Result>();
+
 	}
-	if (count->GetTime() == 3000 && score->GetScore() <= 20)
+	if (count->GetTime() == 3000 && score->GetScore() <= 1)
 	{
 
 		Manager::SetScene<ResultLose>();
+
 	}
-	if (score->GetScore() >= 60)
+	if (score->GetScore() >= 2)
 	{
 
 		Manager::SetScene<ResultPerfect>();
+
 	}
 	
 }

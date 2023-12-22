@@ -135,6 +135,9 @@
     <ClCompile Include="yoyo.cpp">
       <Filter>外観</Filter>
     </ClCompile>
+    <ClCompile Include="posteffect.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="manager.h">
@@ -259,6 +262,9 @@
     </ClInclude>
     <ClInclude Include="yoyo.h">
       <Filter>外観</Filter>
+    </ClInclude>
+    <ClInclude Include="posteffect.h">
+      <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

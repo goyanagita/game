@@ -1,2 +1,2 @@
-#TargetFrameworkVersion=:PlatformToolSet=v141:EnableManagedIncrementalBuild=false:VCToolArchitecture=Native64Bit:WindowsTargetPlatformVersion=10.0.22000.0
-Debug|x64|C:\Users\81906\Documents\GitHub\game\GM31_01_DirectX【3Dモデルの表示】VS2022 - コピー\GM31_01_DirectX【3Dモデルの表示】VS2022 - コピー\|
+PlatformToolSet=v143:VCToolArchitecture=Native64Bit:VCToolsVersion=14.38.33130:TargetPlatformVersion=10.0.22000.0:
+Debug|x64|C:\Users\81906\Documents\GitHub\game\GM31_01_DirectX【3Dモデルの表示】\GM31_01_DirectX【3Dモデルの表示】\|

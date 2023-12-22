@@ -14,7 +14,7 @@ void ResultLogoPerfect::Init()
 		"shader\\unlitTexturePS.cso");
 
 	Sprite* sprite = AddComponent<Sprite>();
-	sprite->Init(0.0f, 0.0f, SCREEN_WIDTH, SCREEN_HEIGHT, "asset\\texture\\SIBAHU.png");
+	sprite->Init(0.0f, 0.0f, SCREEN_WIDTH, SCREEN_HEIGHT, "asset\\texture\\a.png");
 }
 
 void ResultLogoPerfect::Uninit()

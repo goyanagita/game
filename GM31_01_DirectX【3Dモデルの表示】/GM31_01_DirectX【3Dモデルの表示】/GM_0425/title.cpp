@@ -36,4 +36,6 @@ void Title::Update()
 	{
 		Manager::SetScene<Game>();
 	}
+
+	
 }

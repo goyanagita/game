@@ -13,13 +13,12 @@ void Rock::Init()
 
 
 	m_Model = new Model();
-	m_Model->Load("asset\\model\\stone.obj");
-
+	m_Model->Load("asset\\model\\cylinder.obj");
 	Renderer::CreateVertexShader(&m_VertexShader, &m_VertexLayout,
-		"shader\\bloomVS.cso");
+		"shader\\pixelLightingVS.cso");
 
 	Renderer::CreatePixelShader(&m_PixelShader,
-		"shader\\bloomPS.cso");
+		"shader\\pixelLightingPS.cso");
 }
 
 void Rock::Uninit()

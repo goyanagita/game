@@ -13,7 +13,7 @@ void Polygon2D::Init()
 		"shader\\unlitTexturePS.cso");
 
 	Sprite* sprite = AddComponent<Sprite>();
-	sprite->Init(0.0f, 0.0f, 200.0f, 200.0f, "asset\\texture\\kizuna.jpg");
+	sprite->Init(0.0f, 0.0f, 200.0f, 200.0f, "asset\\texture\\Kizuna.jpg");
 }
 
 void Polygon2D::Uninit()
@@ -32,6 +32,8 @@ void Polygon2D::Update()
 
 void Polygon2D::Draw()
 {
+
+
 	//入力レイアウト設定
 	Renderer::GetDeviceContext()->IASetInputLayout(m_VertexLayout);
 

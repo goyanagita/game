@@ -88,5 +88,18 @@ public:
 	static void CreateVertexShader(ID3D11VertexShader** VertexShader, ID3D11InputLayout** VertexLayout, const char* FileName);
 	static void CreatePixelShader(ID3D11PixelShader** PixelShader, const char* FileName);
 
+	static ID3D11RenderTargetView* m_PPRenderTargetView;
+	static ID3D11ShaderResourceView* m_PPShaderResourceView;
+	static ID3D11ShaderResourceView** GetPPTexture() { return &m_PPShaderResourceView; }//レンダリングテクスチャのポインタを取得
+
+	static void BeginPP(){
+		//レンダ―ターゲットとZバッファのセット
+		m_DeviceContext->OMSetRenderTargets(1, &m_PPRenderTargetView, m_DepthStencilView);
+
+		//レンダリングバッファのクリア
+		float ClearColor[4] = { 1.0f, 0.5f, 0.0f, 1.0f };//緑
+		m_DeviceContext->ClearRenderTargetView(m_PPRenderTargetView, ClearColor);
+		m_DeviceContext->ClearDepthStencilView(m_DepthStencilView, D3D11_CLEAR_DEPTH, 1.0f, 0);
+	}
 
 };

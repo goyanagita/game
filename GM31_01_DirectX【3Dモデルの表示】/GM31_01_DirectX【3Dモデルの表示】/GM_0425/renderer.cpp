@@ -12,6 +12,7 @@ IDXGISwapChain*         Renderer::m_SwapChain{};
 ID3D11RenderTargetView* Renderer::m_RenderTargetView{};
 ID3D11DepthStencilView* Renderer::m_DepthStencilView{};
 
+
 ID3D11Buffer*			Renderer::m_WorldBuffer{};
 ID3D11Buffer*			Renderer::m_ViewBuffer{};
 ID3D11Buffer*			Renderer::m_ProjectionBuffer{};
@@ -26,13 +27,12 @@ ID3D11DepthStencilState* Renderer::m_DepthStateDisable{};
 ID3D11BlendState*		Renderer::m_BlendState{};
 ID3D11BlendState*		Renderer::m_BlendStateATC{};
 
-
-
+ID3D11RenderTargetView* Renderer::m_PPRenderTargetView{};
+ID3D11ShaderResourceView* Renderer::m_PPShaderResourceView;
 
 void Renderer::Init()
 {
 	HRESULT hr = S_OK;
-
 
 
 
@@ -46,7 +46,7 @@ void Renderer::Init()
 	swapChainDesc.BufferDesc.RefreshRate.Denominator = 1;
 	swapChainDesc.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
 	swapChainDesc.OutputWindow = GetWindow();
-	swapChainDesc.SampleDesc.Count = 4;//1-4
+	swapChainDesc.SampleDesc.Count = 1;//1-4
 	swapChainDesc.SampleDesc.Quality = 0;
 	swapChainDesc.Windowed = TRUE;
 
@@ -93,7 +93,7 @@ void Renderer::Init()
 	// デプスステンシルビュー作成
 	D3D11_DEPTH_STENCIL_VIEW_DESC depthStencilViewDesc{};
 	depthStencilViewDesc.Format = textureDesc.Format;
-	depthStencilViewDesc.ViewDimension = D3D11_DSV_DIMENSION_TEXTURE2DMS;//MS追加
+	depthStencilViewDesc.ViewDimension = D3D11_DSV_DIMENSION_TEXTURE2D;//MS追加
 	depthStencilViewDesc.Flags = 0;
 	m_Device->CreateDepthStencilView(depthStencile, &depthStencilViewDesc, &m_DepthStencilView);
 	depthStencile->Release();
@@ -243,9 +243,49 @@ void Renderer::Init()
 	material.Diffuse = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
 	material.Ambient = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
 	SetMaterial(material);
+	{
+		//テクスチャー作成
+		ID3D11Texture2D* ppTexture = NULL;
+		D3D11_TEXTURE2D_DESC td; //テクスチャ作成用デスクリプタ構造体変数
+		ZeroMemory(&td, sizeof(td)); //構造体を０初期化
 
+		td.Width = swapChainDesc.BufferDesc.Width; //構造体sdはInit関数の最初で作られている。
+		td.Height = swapChainDesc.BufferDesc.Height;//バックバッファの情報が格納されている
+		td.MipLevels = 1;//ミップマップの数 0は限界まで作る
+		td.ArraySize = 1;
+		td.Format = DXGI_FORMAT_R8G8B8A8_UNORM; //ピクセルフォーマット
+		td.SampleDesc.Count = 1;//1-4
+		td.SampleDesc.Quality = 0;
 
+		td.Usage = D3D11_USAGE_DEFAULT;
+		//使用法のフラグを設定
+		td.BindFlags = D3D11_BIND_RENDER_TARGET | D3D11_BIND_SHADER_RESOURCE;
+		td.CPUAccessFlags = 0;
+		td.MiscFlags = 0;
+		//構造体の設定に従ってテクスチャ領域を作成
+		m_Device->CreateTexture2D(&td, NULL, &ppTexture);
 
+		//レンダーターゲットビュー作成
+		D3D11_RENDER_TARGET_VIEW_DESC rtvd;
+		ZeroMemory(&rtvd, sizeof(rtvd));
+		rtvd.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
+		rtvd.ViewDimension = D3D11_RTV_DIMENSION_TEXTURE2D;
+		m_Device->CreateRenderTargetView(ppTexture, &rtvd,
+			&m_PPRenderTargetView);
+
+		//シェーダーリソースビュー作成
+		D3D11_SHADER_RESOURCE_VIEW_DESC srvd;
+		ZeroMemory(&srvd, sizeof(srvd));
+		srvd.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
+		srvd.ViewDimension = D3D11_SRV_DIMENSION_TEXTURE2D;
+		srvd.Texture2D.MipLevels = 1;
+		m_Device->CreateShaderResourceView(ppTexture, &srvd,
+			&m_PPShaderResourceView);
+		ppTexture->Release();
+	}
+
+	
+	
 
 }
 
@@ -274,6 +314,7 @@ void Renderer::Uninit()
 
 void Renderer::Begin()
 {
+	m_DeviceContext->OMSetRenderTargets(1, &m_RenderTargetView ,m_DepthStencilView);
 	float clearColor[4] = { 0.0f, 0.0f, 0.0f, 1.0f };
 	m_DeviceContext->ClearRenderTargetView( m_RenderTargetView, clearColor );
 	m_DeviceContext->ClearDepthStencilView( m_DepthStencilView, D3D11_CLEAR_DEPTH, 1.0f, 0);

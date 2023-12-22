@@ -2,21 +2,45 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>C:\Users\n68ki\OneDrive\デスクトップ\GM31_01_DirectX【3Dモデルの表示】VS2022 - コピー\GM31_01_DirectX【3Dモデルの表示】VS2022 - コピー\x64\Debug\GM_0425.exe</FullPath>
+      <FullPath>C:\Users\81906\Documents\GitHub\game\GM31_01_DirectX【3Dモデルの表示】\GM31_01_DirectX【3Dモデルの表示】\x64\Debug\GM_0425.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles>
     <ContentFile>
-      <FullPath>C:\Users\n68ki\OneDrive\デスクトップ\GM31_01_DirectX【3Dモデルの表示】VS2022 - コピー\GM31_01_DirectX【3Dモデルの表示】VS2022 - コピー\GM_0425\shader\unlitTexturePS.cso</FullPath>
+      <FullPath>C:\Users\81906\Documents\GitHub\game\GM31_01_DirectX【3Dモデルの表示】\GM31_01_DirectX【3Dモデルの表示】\GM_0425\bloomPS.cso</FullPath>
     </ContentFile>
     <ContentFile>
-      <FullPath>C:\Users\n68ki\OneDrive\デスクトップ\GM31_01_DirectX【3Dモデルの表示】VS2022 - コピー\GM31_01_DirectX【3Dモデルの表示】VS2022 - コピー\GM_0425\shader\unlitTextureVS.cso</FullPath>
+      <FullPath>C:\Users\81906\Documents\GitHub\game\GM31_01_DirectX【3Dモデルの表示】\GM31_01_DirectX【3Dモデルの表示】\GM_0425\bloomVS.cso</FullPath>
     </ContentFile>
     <ContentFile>
-      <FullPath>C:\Users\n68ki\OneDrive\デスクトップ\GM31_01_DirectX【3Dモデルの表示】VS2022 - コピー\GM31_01_DirectX【3Dモデルの表示】VS2022 - コピー\GM_0425\shader\vertexLightingPS.cso</FullPath>
+      <FullPath>C:\Users\81906\Documents\GitHub\game\GM31_01_DirectX【3Dモデルの表示】\GM31_01_DirectX【3Dモデルの表示】\GM_0425\ditherPS.cso</FullPath>
     </ContentFile>
     <ContentFile>
-      <FullPath>C:\Users\n68ki\OneDrive\デスクトップ\GM31_01_DirectX【3Dモデルの表示】VS2022 - コピー\GM31_01_DirectX【3Dモデルの表示】VS2022 - コピー\GM_0425\shader\vertexLightingVS.cso</FullPath>
+      <FullPath>C:\Users\81906\Documents\GitHub\game\GM31_01_DirectX【3Dモデルの表示】\GM31_01_DirectX【3Dモデルの表示】\GM_0425\ditherVS.cso</FullPath>
+    </ContentFile>
+    <ContentFile>
+      <FullPath>C:\Users\81906\Documents\GitHub\game\GM31_01_DirectX【3Dモデルの表示】\GM31_01_DirectX【3Dモデルの表示】\GM_0425\pixelLightingPS.cso</FullPath>
+    </ContentFile>
+    <ContentFile>
+      <FullPath>C:\Users\81906\Documents\GitHub\game\GM31_01_DirectX【3Dモデルの表示】\GM31_01_DirectX【3Dモデルの表示】\GM_0425\pixelLightingVS.cso</FullPath>
+    </ContentFile>
+    <ContentFile>
+      <FullPath>C:\Users\81906\Documents\GitHub\game\GM31_01_DirectX【3Dモデルの表示】\GM31_01_DirectX【3Dモデルの表示】\GM_0425\toonPS.cso</FullPath>
+    </ContentFile>
+    <ContentFile>
+      <FullPath>C:\Users\81906\Documents\GitHub\game\GM31_01_DirectX【3Dモデルの表示】\GM31_01_DirectX【3Dモデルの表示】\GM_0425\toonVS.cso</FullPath>
+    </ContentFile>
+    <ContentFile>
+      <FullPath>C:\Users\81906\Documents\GitHub\game\GM31_01_DirectX【3Dモデルの表示】\GM31_01_DirectX【3Dモデルの表示】\GM_0425\shader\unlitTexturePS.cso</FullPath>
+    </ContentFile>
+    <ContentFile>
+      <FullPath>C:\Users\81906\Documents\GitHub\game\GM31_01_DirectX【3Dモデルの表示】\GM31_01_DirectX【3Dモデルの表示】\GM_0425\shader\unlitTextureVS.cso</FullPath>
+    </ContentFile>
+    <ContentFile>
+      <FullPath>C:\Users\81906\Documents\GitHub\game\GM31_01_DirectX【3Dモデルの表示】\GM31_01_DirectX【3Dモデルの表示】\GM_0425\shader\vertexLightingPS.cso</FullPath>
+    </ContentFile>
+    <ContentFile>
+      <FullPath>C:\Users\81906\Documents\GitHub\game\GM31_01_DirectX【3Dモデルの表示】\GM31_01_DirectX【3Dモデルの表示】\GM_0425\shader\vertexLightingVS.cso</FullPath>
     </ContentFile>
   </ContentFiles>
   <SatelliteDlls />

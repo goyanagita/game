@@ -20,12 +20,12 @@ void main(in PS_IN In, out float4 outDiffuse : SV_Target)
         for (int x = -3; x < 4; x++)//左右は±3ピクセルの範囲
         {//式中の値の３を調整すると光の範囲が変化する
             float2 texCoord = In.TexCoord +
-        float2(x * 3.0 / 0 / 960.0, y * 3.5 / 540 / 0); //テクスチャ座標をずらす
+        float2(x * 3.0 /  960.0, y * 3.5 / 540 ); //テクスチャ座標をずらす
             float4 color = g_Texture.Sample(g_SamplerState, texCoord);
         //明度を計算
             float bright = color.r * 0.299 + color.g * 0.578 + color.b * 0.114;
         //明度が閾値0.7より大きい、かつ処理対象のピクセルでない
-            if (bright > 0.7 && (x != 0 || y != 0))
+            if (bright > 0.6 && (x != 0 || y != 0))
             {
                 bloom += color / (x * x + y * y); //距離によって減衰(ブルームに丸みもできる）
             }
@@ -35,4 +35,6 @@ void main(in PS_IN In, out float4 outDiffuse : SV_Target)
 
     }
     outDiffuse.rgb += bloom; //結果を計算
+    outDiffuse.a = 1;
+
 }
